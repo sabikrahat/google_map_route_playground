@@ -33,12 +33,11 @@ class AboutTile extends ConsumerWidget {
       ),
       title: Text(t.about, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: info == null ? null : Text('${t.appTitle} ${info.version}$bn'),
-      onTap:
-          () async => await showDialog(
-            context: context,
-            barrierDismissible: false,
-            builder: (_) => KAboutDialog('${info?.version}$bn'),
-          ),
+      onTap: () async => await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (_) => KAboutDialog('${info?.version}$bn'),
+      ),
     );
   }
 }
@@ -86,14 +85,14 @@ class KAboutDialog extends StatelessWidget {
             mainAxisSize: mainMin,
             children: [
               Text(
-                '\nAlgonize is an all-in-one OS for service businesses to manage sales, inventory, customers, operations, and more — simple, smart, scalable.',
+                '\nCar Route Planner is a Flutter application that helps users to plan and optimize their driving routes efficiently. With an intuitive interface and powerful features, it allows users to create multi-stop routes, minimize travel time, and enhance their overall driving experience.',
                 style: context.text.labelMedium,
                 textAlign: TextAlign.justify,
               ),
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  '\n- Algoramming.',
+                  '\n- Sabik Rahat.',
                   style: context.text.labelMedium!.copyWith(color: context.theme.primaryColor),
                   textAlign: TextAlign.right,
                 ),
