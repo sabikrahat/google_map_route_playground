@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.sabikrahat.google_map_route_playground"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -24,8 +24,8 @@ android {
         applicationId = "com.sabikrahat.google_map_route_playground"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdkVersion flutter.minSdkVersion
+        targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }

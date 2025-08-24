@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_map_route_playground/src/core/utils/extensions/extensions.dart';
+import 'package:google_map_route_playground/src/features/settings/view/setting_view.dart';
 
 import '../../../../core/config/constants.dart';
 import '../../../../core/config/size.dart';
@@ -38,6 +39,18 @@ class InformationChips extends StatelessWidget {
               ),
               backgroundColor: context.theme.primaryColor,
             ),
+          InkWell(
+            radius: 45,
+            onTap: () async => await context.goPush(SettingsView.name),
+            child: Chip(
+              avatar: const Icon(Icons.settings, size: 20, color: white),
+              label: Text(
+                'Settings',
+                style: context.text.labelLarge?.copyWith(color: white, fontWeight: FontWeight.w700),
+              ),
+              backgroundColor: context.theme.primaryColor,
+            ),
+          ),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_map_route_playground/src/core/db/init.dart';
 import 'package:google_map_route_playground/src/core/shared/riverpod/helper.dart';
 import 'package:google_map_route_playground/src/features/home/provider/map_provider.dart';
 import 'package:google_map_route_playground/src/features/home/view/components/top_search_bar.dart';
@@ -30,6 +31,7 @@ class _MapViewState extends ConsumerState<MapView> {
 
   @override
   Widget build(BuildContext context) {
+    ref.watch(appSettingStreamPd);
     return Scaffold(
       body: ref
           .watch(mapProvider)
@@ -112,8 +114,7 @@ class _MapViewState extends ConsumerState<MapView> {
                         child: const Icon(Icons.location_pin, color: Colors.white, size: 22),
                       ),
                     ),
-                  if (notifier.sourceLatLng != null && notifier.destinationLatLng != null)
-                    InformationChips(notifier: notifier),
+                  InformationChips(notifier: notifier),
                 ],
               );
             },
