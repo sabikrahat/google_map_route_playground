@@ -10,6 +10,7 @@ import '../../../core/config/size.dart';
 import '../../../core/initilizer/initializer.dart';
 import '../../../injector.dart';
 import '../../settings/model/settings_model.dart';
+import 'components/information_chips.dart';
 
 class MapView extends ConsumerStatefulWidget {
   const MapView({super.key});
@@ -69,6 +70,50 @@ class _MapViewState extends ConsumerState<MapView> {
                     right: defaultPadding / 2,
                     child: TopSearchBar(),
                   ),
+                  if (notifier.sourceLatLng != null)
+                    Positioned(
+                      bottom: defaultPadding * 10,
+                      right: defaultPadding,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(shape: CircleBorder()),
+                        onPressed: notifier.sourceLatLng == null
+                            ? null
+                            : () async {
+                                await _cntrlr?.animateCamera(
+                                  CameraUpdate.newCameraPosition(
+                                    CameraPosition(
+                                      target: notifier.sourceLatLng!,
+                                      zoom: notifier.defaultZoomLevel,
+                                    ),
+                                  ),
+                                );
+                              },
+                        child: const Icon(Icons.my_location, color: Colors.white, size: 22),
+                      ),
+                    ),
+                  if (notifier.destinationLatLng != null)
+                    Positioned(
+                      bottom: defaultPadding * 6,
+                      right: defaultPadding,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(shape: CircleBorder()),
+                        onPressed: notifier.destinationLatLng == null
+                            ? null
+                            : () async {
+                                await _cntrlr?.animateCamera(
+                                  CameraUpdate.newCameraPosition(
+                                    CameraPosition(
+                                      target: notifier.destinationLatLng!,
+                                      zoom: notifier.defaultZoomLevel,
+                                    ),
+                                  ),
+                                );
+                              },
+                        child: const Icon(Icons.location_pin, color: Colors.white, size: 22),
+                      ),
+                    ),
+                  if (notifier.sourceLatLng != null && notifier.destinationLatLng != null)
+                    InformationChips(notifier: notifier),
                 ],
               );
             },
