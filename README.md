@@ -43,14 +43,14 @@ A beautiful Flutter application that demonstrates Google Maps integration with r
      - Geocoding API
 
 2. **Configure API Key**:
-   - Create a `.env` file in the root directory (copy from `dotenv` file)
+   - Create a `dotenv` file in the root directory.
    - Add your API key: `GOOGLE_MAP_KEY=your_api_key_here`
 
 ### Installation
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/google_map_route_playground.git
+   git clone https://github.com/sabikrahat/google_map_route_playground.git
    cd google_map_route_playground
    ```
 
