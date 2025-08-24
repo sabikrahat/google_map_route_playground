@@ -12,17 +12,34 @@ final mapProvider = MapNotifier(MapProvider.new);
 
 class MapProvider extends AsyncNotifier<void> {
   Completer<GoogleMapController> _cntrlr = Completer();
+  String? sourceAddress;
   LatLng? _sourceLatLng;
+  String? destinationAddress;
   LatLng? _destinationLatLng;
 
-  final double _defaultZoomLevel = 16.0;
+  final double _defaultZoomLevel = 12.0;
 
   @override
-  FutureOr<void> build() {}
+  FutureOr<void> build() {
+    _cntrlr = Completer();
+    // Initialize with sample locations (Dhaka, Bangladesh area)
+    // _sourceLatLng = const LatLng(23.8103, 90.4125); // Your location
+    // _destinationLatLng = const LatLng(23.7805, 90.2792); // Natore Tower area
+  }
 
   LatLng? get sourceLatLng => _sourceLatLng;
   LatLng? get destinationLatLng => _destinationLatLng;
   double get defaultZoomLevel => _defaultZoomLevel;
+
+  void setSourceLatLng(LatLng latLng) {
+    _sourceLatLng = latLng;
+    ref.notifyListeners();
+  }
+
+  void setDestinationLatLng(LatLng latLng) {
+    _destinationLatLng = latLng;
+    ref.notifyListeners();
+  }
 
   void onMapCreated(GoogleMapController cntrlr) {
     log.i('Google map controller adding to the completer.');
@@ -47,11 +64,16 @@ class MapProvider extends AsyncNotifier<void> {
         bearing: 0,
       );
     }
-    return CameraPosition(target: LatLng(0, 0), zoom: _defaultZoomLevel, tilt: 0, bearing: 0);
+    return CameraPosition(
+      target: LatLng(23.7639, 90.2320),
+      zoom: _defaultZoomLevel,
+      tilt: 0,
+      bearing: 0,
+    );
   }
 
   Set<Marker> get markers {
-    if (_sourceLatLng == null && _destinationLatLng == null) <Marker>{};
+    if (_sourceLatLng == null && _destinationLatLng == null) return <Marker>{};
     Set<Marker> markers = {};
     if (_sourceLatLng != null) {
       final m1 = {
