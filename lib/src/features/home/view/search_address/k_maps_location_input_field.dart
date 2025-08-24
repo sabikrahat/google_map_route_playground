@@ -14,6 +14,8 @@ class KMapLocationInputField<T extends Object> extends StatelessWidget {
   // final void Function(String?)? onChanged;
   final String? initialValue;
   final AutocompleteOptionsViewBuilder<T>? optionsViewBuilder;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
 
   const KMapLocationInputField({
     super.key,
@@ -25,6 +27,8 @@ class KMapLocationInputField<T extends Object> extends StatelessWidget {
     // this.onChanged,
     this.optionsViewBuilder,
     this.initialValue,
+    this.prefixIcon,
+    this.suffixIcon,
   });
 
   @override
@@ -43,7 +47,12 @@ class KMapLocationInputField<T extends Object> extends StatelessWidget {
             fieldTextEditingController.text = initialValue ?? '';
             return TextFormField(
               controller: fieldTextEditingController,
-              decoration: InputDecoration(hintText: hint, hintStyle: context.text.bodyMedium),
+              decoration: InputDecoration(
+                prefixIcon: prefixIcon,
+                suffixIcon: suffixIcon,
+                hintText: hint,
+                hintStyle: context.text.bodyMedium,
+              ),
               // onChanged: onChanged,
               focusNode: fieldFocusNode,
               validator: validator,

@@ -39,6 +39,7 @@ class _TopSearchBarState extends ConsumerState<TopSearchBar> {
         children: [
           KMapLocationInputField(
             hint: 'Search source address',
+            prefixIcon: const Icon(Icons.my_location),
             optionsBuilder: (t) async {
               notifier.sourceAddress = t.text;
               return await GoogleMapsHelper().getLocations(t.text);
@@ -73,6 +74,7 @@ class _TopSearchBarState extends ConsumerState<TopSearchBar> {
           const SizedBox(height: defaultPadding / 2),
           KMapLocationInputField(
             hint: 'Search destination address',
+            prefixIcon: const Icon(Icons.location_on),
             optionsBuilder: (t) async {
               notifier.destinationAddress = t.text;
               return await GoogleMapsHelper().getLocations(t.text);
