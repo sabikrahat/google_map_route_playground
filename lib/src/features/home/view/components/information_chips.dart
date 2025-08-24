@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_map_route_playground/src/core/utils/extensions/extensions.dart';
-import 'package:google_map_route_playground/src/features/settings/view/setting_view.dart';
+import '../../../../core/utils/extensions/extensions.dart';
+import '../../../settings/view/setting_view.dart';
 
 import '../../../../core/config/constants.dart';
 import '../../../../core/config/size.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_map_route_playground/src/core/utils/extensions/extensions.dart';
+import '../../../../core/utils/extensions/extensions.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../../../core/config/constants.dart';

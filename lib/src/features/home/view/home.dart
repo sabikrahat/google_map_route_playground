@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_map_route_playground/src/features/home/view/map_view.dart';
+import 'map_view.dart';
 
 import '../../../core/shared/riverpod/helper.dart';
 import 'components/location_handler.dart';

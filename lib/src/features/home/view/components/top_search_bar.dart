@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_map_route_playground/src/core/config/size.dart';
-import 'package:google_map_route_playground/src/core/utils/extensions/extensions.dart';
+import '../../../../core/config/size.dart';
+import '../../../../core/utils/extensions/extensions.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../core/utils/logger/logger_helper.dart';

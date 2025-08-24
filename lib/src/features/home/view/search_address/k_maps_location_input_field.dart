@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:google_map_route_playground/src/core/utils/extensions/extensions.dart';
+import '../../../../core/utils/extensions/extensions.dart';
 
 import '../../../../core/config/size.dart';
 
@@ -73,14 +73,22 @@ class KMapLocationInputField<T extends Object> extends StatelessWidget {
                   width: ctx.width - (defaultPadding * 2),
                   height: 300,
                   child: ListView.separated(
+                    padding: EdgeInsets.only(top: defaultPadding / 2),
                     itemCount: options.length,
                     separatorBuilder: (_, _) => const Divider(),
                     itemBuilder: (_, index) {
                       final option = options.elementAt(index);
-                      return ListTile(
-                        title: Text(displayStringForOption(option)),
-                        onTap: () => onSelected(option),
-                        trailing: Icon(Icons.arrow_outward_rounded, color: ctx.theme.dividerColor),
+                      return Card(
+                        color: ctx.theme.scaffoldBackgroundColor,
+                        shape: defaultRoundedRectangleBorder,
+                        child: ListTile(
+                          title: Text(displayStringForOption(option)),
+                          onTap: () => onSelected(option),
+                          trailing: Icon(
+                            Icons.arrow_outward_rounded,
+                            color: ctx.theme.dividerColor,
+                          ),
+                        ),
                       );
                     },
                   ),

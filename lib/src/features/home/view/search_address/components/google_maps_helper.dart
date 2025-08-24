@@ -3,11 +3,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../../../core/config/environment.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../../../core/config/environment.dart';
 import 'map_prediction_model.dart';
 import 'place_details_result.dart';
 

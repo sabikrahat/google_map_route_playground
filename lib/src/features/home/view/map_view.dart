@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_map_route_playground/src/core/db/init.dart';
-import 'package:google_map_route_playground/src/core/shared/riverpod/helper.dart';
-import 'package:google_map_route_playground/src/features/home/provider/map_provider.dart';
-import 'package:google_map_route_playground/src/features/home/view/components/top_search_bar.dart';
-import 'package:google_map_route_playground/src/features/settings/model/theme/theme_model.dart';
+import '../../../core/db/init.dart';
+import '../../../core/shared/riverpod/helper.dart';
+import '../provider/map_provider.dart';
+import 'components/top_search_bar.dart';
+import '../../settings/model/theme/theme_model.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../core/config/size.dart';
@@ -67,7 +67,7 @@ class _MapViewState extends ConsumerState<MapView> {
                     zoomControlsEnabled: false,
                   ),
                   Positioned(
-                    top: defaultPadding * 4,
+                    top: topBarSize + defaultPadding / 2,
                     left: defaultPadding / 2,
                     right: defaultPadding / 2,
                     child: TopSearchBar(),

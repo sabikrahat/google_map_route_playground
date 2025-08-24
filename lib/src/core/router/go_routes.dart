@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:google_map_route_playground/src/features/home/view/home.dart';
+import '../../features/home/view/home.dart';
 
 import '../../features/settings/view/setting_view.dart';
 import '../shared/page_not_found/page_not_found.dart';
