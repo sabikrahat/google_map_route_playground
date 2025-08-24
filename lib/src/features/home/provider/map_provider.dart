@@ -48,17 +48,35 @@ class MapProvider extends AsyncNotifier<void> {
   }
 
   CameraPosition get cameraPosition {
-    if (_sourceLatLng != null) {
+    if (_sourceLatLng != null && _destinationLatLng != null) {
+      // camera bounding to include both source and destination
+      final southWestLat = (_sourceLatLng!.latitude <= _destinationLatLng!.latitude)
+          ? _sourceLatLng!.latitude
+          : _destinationLatLng!.latitude;
+      final southWestLng = (_sourceLatLng!.longitude <= _destinationLatLng!.longitude)
+          ? _sourceLatLng!.longitude
+          : _destinationLatLng!.longitude;
+      final northEastLat = (_sourceLatLng!.latitude > _destinationLatLng!.latitude)
+          ? _sourceLatLng!.latitude
+          : _destinationLatLng!.latitude;
+      final northEastLng = (_sourceLatLng!.longitude > _destinationLatLng!.longitude)
+          ? _sourceLatLng!.longitude
+          : _destinationLatLng!.longitude;
+      final centerLat = (southWestLat + northEastLat) / 2;
+      final centerLng = (southWestLng + northEastLng) / 2;
       return CameraPosition(
-        target: LatLng(_sourceLatLng!.latitude, _sourceLatLng!.longitude),
+        target: LatLng(centerLat, centerLng),
         zoom: _defaultZoomLevel,
         tilt: 0,
         bearing: 0,
       );
     }
+    if (_sourceLatLng != null) {
+      return CameraPosition(target: _sourceLatLng!, zoom: _defaultZoomLevel, tilt: 0, bearing: 0);
+    }
     if (_destinationLatLng != null) {
       return CameraPosition(
-        target: LatLng(_destinationLatLng!.latitude, _destinationLatLng!.longitude),
+        target: _destinationLatLng!,
         zoom: _defaultZoomLevel,
         tilt: 0,
         bearing: 0,
