@@ -58,6 +58,7 @@ class KMapLocationInputField<T extends Object> extends StatelessWidget {
               validator: validator,
               onFieldSubmitted: (_) => onFieldSubmitted(),
               autovalidateMode: AutovalidateMode.onUserInteraction,
+              onTapOutside: (event) => fieldFocusNode.unfocus(),
             );
           },
       optionsViewBuilder:
@@ -67,6 +68,7 @@ class KMapLocationInputField<T extends Object> extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Material(
                 color: ctx.theme.cardColor,
+                shape: defaultRoundedRectangleBorder,
                 child: SizedBox(
                   width: ctx.width - (defaultPadding * 2),
                   height: 300,
