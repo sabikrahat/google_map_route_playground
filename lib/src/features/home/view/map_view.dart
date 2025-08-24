@@ -42,7 +42,12 @@ class _MapViewState extends ConsumerState<MapView> {
                   GoogleMap(
                     key: const ValueKey('track'),
                     padding: const EdgeInsets.all(defaultPadding / 2),
-                    initialCameraPosition: notifier.cameraPosition,
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(23.7639, 90.2320), // dhaka center
+                      zoom: notifier.defaultZoomLevel,
+                      tilt: 0,
+                      bearing: 0,
+                    ),
                     onMapCreated: (v) {
                       notifier.onMapCreated(v);
                       _cntrlr = v;

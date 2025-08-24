@@ -31,13 +31,15 @@ class MapProvider extends AsyncNotifier<void> {
   LatLng? get destinationLatLng => _destinationLatLng;
   double get defaultZoomLevel => _defaultZoomLevel;
 
-  void setSourceLatLng(LatLng latLng) {
+  Future<void> setSourceLatLng(LatLng latLng) async {
     _sourceLatLng = latLng;
+    await moveCameraToFitBounds();
     ref.notifyListeners();
   }
 
-  void setDestinationLatLng(LatLng latLng) {
+  Future<void> setDestinationLatLng(LatLng latLng) async {
     _destinationLatLng = latLng;
+    await moveCameraToFitBounds();
     ref.notifyListeners();
   }
 
@@ -45,6 +47,12 @@ class MapProvider extends AsyncNotifier<void> {
     log.i('Google map controller adding to the completer.');
     if (_cntrlr.isCompleted) _cntrlr = Completer();
     _cntrlr.complete(cntrlr);
+  }
+
+  Future<void> moveCameraToFitBounds() async {
+    if (_sourceLatLng == null && _destinationLatLng == null) return;
+    final controller = await _cntrlr.future;
+    await controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
   }
 
   CameraPosition get cameraPosition {
