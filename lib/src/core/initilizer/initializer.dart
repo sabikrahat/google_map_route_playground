@@ -14,6 +14,9 @@ import '../db/init.dart';
 import '../shared/error_view/error_view.dart';
 import '../utils/logger/logger_helper.dart';
 
+String? googleMapLightStyle;
+String? googleMapDarkStyle;
+
 class Initializer {
   Initializer._();
 
@@ -57,6 +60,7 @@ class Initializer {
       _configEasyLoading();
       await openDB();
       await initAppDatum();
+      await _initMapStyles();
       if (sl<PT>().isWeb) setUrlStrategy(PathUrlStrategy());
     } catch (err) {
       rethrow;
@@ -75,4 +79,13 @@ class Initializer {
     ..userInteractions = false
     ..maskType = EasyLoadingMaskType.black
     ..indicatorType = EasyLoadingIndicatorType.fadingCircle;
+
+  static Future<void> _initMapStyles() async {
+    await Future.wait([
+      rootBundle
+          .loadString('assets/json/map-light-mode.json')
+          .then((ls) => googleMapLightStyle = ls),
+      rootBundle.loadString('assets/json/map-dark-mode.json').then((ds) => googleMapDarkStyle = ds),
+    ]);
+  }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ConsumerWidget, WidgetRef;
-import 'package:google_map_route_playground/src/features/home/home.dart';
+import 'package:google_map_route_playground/src/features/home/view/home.dart';
 
 import 'core/config/constants.dart' show appName;
 import 'core/config/size.dart';

@@ -22,7 +22,7 @@ class AppSettings extends HiveObject {
   @HiveField(2)
   String fontFamily = 'Urbanist';
   @HiveField(3)
-  ThemeProfile theme = ThemeProfile.light;
+  ThemeProfile theme = ThemeProfile.system;
 
   String toRawJson() => json.encode(toJson());
 
